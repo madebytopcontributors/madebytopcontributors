@@ -1,0 +1,26 @@
+{
+  "name": "madebytopcontributors",
+  "version": "1.0.0",
+  "description": "madebytopcontributors",
+  "main":"src/Code.gs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "pull": "gulp app",
+    "push": "gulp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/madebytopcontributors/madebytopcontributors.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "del": "^3.0.0",
+    "gulp": "^3.9.1"
+  },
+  "dependencies": {},
+  "bugs": {
+    "url": "https://github.com/madebytopcontributors/madebytopcontributors/issues"
+  },
+  "homepage": "https://github.com/madebytopcontributors/madebytopcontributors"
+}
