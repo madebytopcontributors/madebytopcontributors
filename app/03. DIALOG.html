@@ -1,11 +1,42 @@
-<link rel="stylesheet" href="https://ssl.gstatic.com/docs/script/css/add-ons1.css">
-
-<h1>Titles and headers</h1>
-<b>Bold text</b>
-Normal text
-<a href="">Links</a>
-<span class="current">Current navigation selection</span>
-<span class="error">Form input errors</span>
-<span class="gray">Gray text</span>
-<span class="secondary">Secondary text</span>
-Hello, world! <input type="button" value="Close" onclick="google.script.host.close()" />
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+    <link rel="stylesheet" href="https://ssl.gstatic.com/docs/script/css/add-ons1.css">
+    <style>
+      .logo {
+        position: absolute;
+        bottom: 20px;
+        right: 0;
+        width: 80px;
+      }
+      .MbTC {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+      }
+      .Last {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div><img class="logo" src=" https://drive.google.com/uc?authuser=0&id=0B-VhvybGY1mlWHl5T3JDUk0tN0k&export=download"></div>
+    <div class="MbTC"> Made by Top Contributors</div>
+    <div class="Last"> More information about the custom formula's can be found on the <a href="https://sites.google.com/s/0B-VhvybGY1mleXQ2bFJxNWJBZUE/p/0B5DwwZxW-IBcQzFNSVZmTUdmWTQ/edit?authuser=1">website</a>.</div>
+    <div id="html"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.7.2/showdown.min.js"></script>
+    <script>    
+      function ready() {
+        showdown.setFlavor('github');
+        var converter = new showdown.Converter();
+        var text = '<?= markdown ?>';
+        var html = converter.makeHtml(text);
+        document.getElementById('html').innerHTML = converter.makeHtml(html);
+      }    
+      document.addEventListener("DOMContentLoaded", ready);    
+    </script>
+  </body>
+</html>

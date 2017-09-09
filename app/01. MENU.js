@@ -5,17 +5,19 @@
 */
 var JJ = 'Jacob Jan Tuinstra';
 var AL = 'Adam Lusk';
+var AI = 'Alexander Ivanov';
+
+var MATRIX_TEXT  = 'MATRIX formula';
+var SQL_TEXT = 'SQL Joins formula'
 
 /**
-* Adds menu item
+* Adds menu item 
 */
 function onOpen(e) {
   SpreadsheetApp.getUi().createAddonMenu()
-    .addItem('MATRIX', 'matrixInfo')
-    .addItem('SQL JOINS', 'sqlJoinsInfo')
-    .addItem('COLUMN TO LETTER', 'columnToLetterInfo')
-    .addItem('LETTER TO COLUMN', 'letterToColumnInfo')
-    .addToUi();
+  .addItem(MATRIX_TEXT, 'matrixInfo')
+  .addItem(SQL_TEXT, 'sqlJoinsInfo')
+  .addToUi();  
 }
 
 /**
@@ -26,39 +28,42 @@ function onInstall(e) {
 }
 
 /**
+* The best way to create a modal window with description of module is create a html file with markdown content.
+* Naming convention. Please, create the file name with '.MD' suffix. Example "10. MATRIX.gs" "10. MATRIX.MD.html"
+*/
+
+/**
 * Opens dialog for MATRIX custom formula
 */
 function matrixInfo() {
-  showDialog(JJ);
+  showDialog(include_('10. MATRIX.MD'), MATRIX_TEXT, 630, 400);
 }
 
 /**
 * Opens dialog for SQL JOINS custom formula
 */
 function sqlJoinsInfo() {
-  showDialog(JJ);
-}
-
-/**
-* Opens dialog for column to letter custom formula
-*/
-function columnToLetterInfo() {
-  showDialog(AL);
-}
-
-/**
-* Opens dialog for letter to column custom formula
-*/
-function letterToColumnInfo() {
-  showDialog(AL);
+  showDialog('', SQL_TEXT);
 }
 
 /**
 * Opens a dialog for SQL JOINS custom formulas
 */
-function showDialog(name) {
-  var html = HtmlService.createHtmlOutputFromFile('03. DIALOG')
-    .setWidth(500)
-    .setHeight(300);
-  SpreadsheetApp.getUi().showModalDialog(html, 'Information');
+function showDialog(markdown, title, width, height) {
+  width = width || 630;
+  height = height || 400;
+  var html = HtmlService.createTemplateFromFile('03. DIALOG');
+  html.markdown = markdown;
+  SpreadsheetApp.getUi().showModalDialog(html.evaluate().setWidth(width).setHeight(height), title);
+}
+
+/**
+* Returns content of a project file. The Best Practices https://developers.google.com/apps-script/guides/html/best-practices
+* @param {string} filename The file name.
+* @returns {string} The complete URL.
+* @private
+*/
+function include_(filename) {
+  return HtmlService.createHtmlOutputFromFile(filename)
+      .getContent();
 }
