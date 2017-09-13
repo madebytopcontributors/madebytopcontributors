@@ -36,22 +36,22 @@ function onInstall(e) {
 * Opens dialog for MATRIX custom formula
 */
 function matrixInfo() {
-  showDialog(include_('10. MATRIX.MD'), MATRIX_TEXT, 630, 400);
+  showDialog(include_('10. MATRIX.MD'), MATRIX_TEXT, 640, 430);
 }
 
 /**
 * Opens dialog for SQL JOINS custom formula
 */
 function sqlJoinsInfo() {
-  showDialog('', SQL_TEXT);
+  showDialog(include_('11. SQLJOINS.MD'), SQL_TEXT, 640, 430);
 }
 
 /**
 * Opens a dialog for SQL JOINS custom formulas
 */
 function showDialog(markdown, title, width, height) {
-  width = width || 630;
-  height = height || 400;
+  width = width || 640;
+  height = height || 430;
   var html = HtmlService.createTemplateFromFile('03. DIALOG');
   html.markdown = markdown;
   SpreadsheetApp.getUi().showModalDialog(html.evaluate().setWidth(width).setHeight(height), title);
@@ -65,5 +65,5 @@ function showDialog(markdown, title, width, height) {
 */
 function include_(filename) {
   return HtmlService.createHtmlOutputFromFile(filename)
-      .getContent();
+    .getContent();
 }
