@@ -1,5 +1,5 @@
 # madebytopcontributors
-A Google Docs Add-on
+A Google Docs Add-on, see: https://sites.google.com/view/madebytopcontributors for more information
 
 ## Contribute
 
