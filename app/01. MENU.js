@@ -3,12 +3,11 @@
 /**
 * globals
 */
-var JJ = 'Jacob Jan Tuinstra';
-var AL = 'Adam Lusk';
-var AI = 'Alexander Ivanov';
 
 var MATRIX_TEXT  = 'MATRIX formula';
-var SQL_TEXT = 'SQL Joins formula'
+var SQL_TEXT = 'SQL Joins formula';
+var STD_WIDTH = 645;
+var STD_HEIGHT = 450;
 
 /**
 * Adds menu item 
@@ -36,22 +35,22 @@ function onInstall(e) {
 * Opens dialog for MATRIX custom formula
 */
 function matrixInfo() {
-  showDialog(include_('10. MATRIX.MD'), MATRIX_TEXT, 640, 430);
+  showDialog(include_('10. MATRIX.MD'), MATRIX_TEXT, STD_WIDTH, STD_HEIGHT);
 }
 
 /**
 * Opens dialog for SQL JOINS custom formula
 */
 function sqlJoinsInfo() {
-  showDialog(include_('11. SQLJOINS.MD'), SQL_TEXT, 640, 430);
+  showDialog(include_('11. SQLJOINS.MD'), SQL_TEXT, STD_WIDTH, STD_HEIGHT);
 }
 
 /**
 * Opens a dialog for SQL JOINS custom formulas
 */
 function showDialog(markdown, title, width, height) {
-  width = width || 640;
-  height = height || 430;
+  width = width || 645;
+  height = height || 450;
   var html = HtmlService.createTemplateFromFile('03. DIALOG');
   html.markdown = markdown;
   SpreadsheetApp.getUi().showModalDialog(html.evaluate().setWidth(width).setHeight(height), title);

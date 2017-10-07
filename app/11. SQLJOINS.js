@@ -131,9 +131,18 @@ function SQLOUTEREXCLUDINGJOIN(range1, pk1, range2, pk2, opt_header) {
 }  
 
 function sqlJoin(range1, pk1, range2, pk2, opt_header, type) {  
-  var ind1 = pk1 - 1, ind2 = pk2 - 1, opt_header = opt_header || false, std = null; 
+  var ind1 = pk1 - 1, ind2 = pk2 - 1, std = null; 
   var FIRST = 'first', SECOND = 'second';
-      
+  
+  if(opt_header) {
+    opt_header = true;
+  } else {
+    if(typeof(opt_header) !== 'boolean') {
+      throw "No boolean input found for header option.";
+      return;
+    }
+  }
+  
   if(opt_header === true) {
     var h1 = range1[0], h2 = range2[0];    
     range1.shift();

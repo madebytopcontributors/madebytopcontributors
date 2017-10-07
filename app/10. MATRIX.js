@@ -18,16 +18,14 @@ function MATRIX(range, opt_row, opt_col, opt_sort) {
     var argLen = arg.length; 
     if(argLen === 1) {
       return Array.isArray(arg[0]) ? range : arg[0];
-    } else {
-      var rowOutput, colOutput, sortOutput;
-    }    
+    } 
   } else { 
     return;
   }
     
   // row  
   if(arg[1]) {
-    rowOutput = checkandprocess(arg[1], range, 'row');
+    var rowOutput = checkandprocess(arg[1], range, 'row');
     if(argLen === 2) {
       return rowOutput;
     }
@@ -41,7 +39,7 @@ function MATRIX(range, opt_row, opt_col, opt_sort) {
     
   // column
   if(arg[2]) {
-    colOutput = checkandprocess(arg[2], rowOutput, 'column');    
+    var colOutput = checkandprocess(arg[2], rowOutput, 'column');    
     if(argLen === 3) {
       return transposeArray(colOutput);
     }
@@ -239,7 +237,7 @@ Array.prototype.deepValueSort = function(rLenCol, sortP) {
           } else {
             return sort == true ? index_a - index_b : index_b - index_a;
           }
-        } 
+        }
       }
     } 
   }
