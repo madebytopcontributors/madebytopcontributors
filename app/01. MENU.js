@@ -6,6 +6,7 @@
 
 var MATRIX_TEXT  = 'MATRIX formula';
 var SQL_TEXT = 'SQL Joins formula';
+var PRIVACY_POLICY_TEXT = 'Privacy policy';
 var STD_WIDTH = 645;
 var STD_HEIGHT = 450;
 
@@ -16,6 +17,8 @@ function onOpen(e) {
   SpreadsheetApp.getUi().createAddonMenu()
   .addItem(MATRIX_TEXT, 'matrixInfo')
   .addItem(SQL_TEXT, 'sqlJoinsInfo')
+  .addSeparator()
+  .addItem(PRIVACY_POLICY_TEXT, 'privacypolicyInfo')  
   .addToUi();  
 }
 
@@ -43,6 +46,13 @@ function matrixInfo() {
 */
 function sqlJoinsInfo() {
   showDialog(include_('11. SQLJOINS.MD'), SQL_TEXT, STD_WIDTH, STD_HEIGHT);
+}
+
+/**
+* Opens dialog for the privacy policy JOINS custom formula
+*/
+function privacypolicyInfo() {
+  showDialog(include_('98. PRIVACY_POLICY.MD'), PRIVACY_POLICY_TEXT, STD_WIDTH, STD_HEIGHT);
 }
 
 /**

@@ -12,7 +12,7 @@
  */
 function MATRIX(range, opt_row, opt_col, opt_sort) {
   var arg = arguments;
-  
+    
   // data
   if(arg[0]) {
     var argLen = arg.length; 

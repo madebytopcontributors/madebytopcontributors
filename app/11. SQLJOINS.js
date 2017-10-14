@@ -141,13 +141,13 @@ function sqlJoin(range1, pk1, range2, pk2, opt_header, type) {
       throw "No boolean input found for header option.";
       return;
     }
-  }
+  }  
   
   if(opt_header === true) {
-    var h1 = range1[0], h2 = range2[0];    
+    var h1 = range1[0], h2 = range2[0];
     range1.shift();
-    range2.shift();
-  } 
+    range2.shift();    
+  }   
   
   if(checkTypes(range1, ind1, FIRST) !== checkTypes(range2, ind2, SECOND)) {
     throw "Types of the primairy keys aren't the same";
@@ -241,6 +241,8 @@ function checkTypes (range, index, kind) {
   var homogeneous = range.every ( function (d) {
     return (typeof(d[index]) === first) || !d[index];
   });
+  
+  return homogeneous;
   
   if(homogeneous === false) {
     throw "The " + kind + " range of primairy keys isn't homogenous";
