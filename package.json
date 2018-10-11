@@ -5,8 +5,12 @@
   "main": "src/Code.gs",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "pull": "gulp app",
-    "push": "gulp"
+    "clear:after": "rm ./.clasp.json",
+    "clear:src": "rm -rf ./src/",
+    "push:dev": "cp settings/.clasp.dev.json .clasp.json && clasp push; npm run clear:after",
+    "push:prod": "cp settings/.clasp.prod.json .clasp.json && clasp push; npm run clear:after",
+    "pull:dev": "npm run clear:src && cp settings/.clasp.dev.json .clasp.json && clasp pull; npm run clear:after",
+    "pull:prod": "npm run clear:src && cp settings/.clasp.prod.json .clasp.json && clasp pull; npm run clear:after"
   },
   "repository": {
     "type": "git",
@@ -16,8 +20,15 @@
   "license": "ISC",
   "devDependencies": {
     "@google/clasp": "^1.6.3",
+    "@types/google-apps-script": "0.0.29",
     "del": "^3.0.0",
-    "gulp": "^3.9.1"
+    "eslint": "^5.6.1",
+    "eslint-config-google": "^0.10.0",
+    "eslint-config-prettier": "^3.1.0",
+    "eslint-plugin-googleappsscript": "^1.0.1",
+    "eslint-plugin-prettier": "^3.0.0",
+    "gulp": "^3.9.1",
+    "prettier": "^1.14.3"
   },
   "dependencies": {},
   "bugs": {

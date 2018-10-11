@@ -1,0 +1,608 @@
+// Author: Jacob Jan Tuinstra
+// https://en.wikipedia.org/wiki/Physical_constant
+
+/**
+ * Present the Planck length in m. Make sure to format in a scientific notation !!
+ * @return constant
+ * @customfunction
+ */
+function CONST_PLANCKLENGTH() { 
+  return 1.616229 * Math.pow(10, -35);
+}
+
+/**
+ * Present the Planck mass in kg. Make sure to format in a scientific notation !!
+ * @return constant
+ * @customfunction
+ */
+function CONST_PLANCKMASS() { 
+  return 2.176470 * Math.pow(10, -8);
+}
+
+/**
+ * Present the Planck time in s. Make sure to format in a scientific notation !!
+ * @return constant
+ * @customfunction
+ */
+function CONST_PLANCKTIME() { 
+  return 5.39116 * Math.pow(10, -44);
+}
+
+/**
+ * Present the Planck charge in C. Make sure to format in a scientific notation !!
+ * @return constant
+ * @customfunction
+ */
+function CONST_PLANCKCHARGE() { 
+  return 1.875545956 * Math.pow(10, -18);
+}
+
+/**
+ * Present the Planck temperature in K. Make sure to format in a scientific notation !!
+ * @return constant
+ * @customfunction
+ */
+function CONST_PLANCKTEMPERATURE() { 
+  return 1.416808 * Math.pow(10, 32);
+}
+
+/**
+ * Present the speed of light in vacuum in m⋅s-1. 
+ * @return constant
+ * @customfunction
+ */
+function CONST_SPEEDOFLIGHTINVACUUM() { 
+  return 299792458;
+}
+
+/**
+ * Present the Newtonian constant of gravitation in m3⋅kg−1⋅s−2. Make sure to format in a scientific notation !!
+ * @return constant
+ * @customfunction
+ */
+function CONST_NEWTONIANCONSTANTOFGRAVITATION() { 
+  return 6.67408 * Math.pow(10, -11);
+}
+
+/**
+ * Present the Planck constant in J⋅s. Make sure to format in a scientific notation !!
+ * @return constant
+ * @customfunction
+ */
+function CONST_PLANCKCONSTANT() { 
+  return 6.626070040 * Math.pow(10, -34);
+}
+
+/**
+ * Present the Planck constant in J⋅s. Make sure to format in a scientific notation !!
+ * @return constant
+ * @customfunction
+ */
+function CONST_REDUCEDPLANCKCONSTANT() { 
+  return 1.054571800 * Math.pow(10, -34);
+}
+
+/**
+ * Present the magnetic constant (vacuum permeability) in N⋅A−2. Make sure to format in a scientific notation !!
+ * @return constant
+ * @customfunction
+ */
+function CONST_MAGNETICCONSTANT() { 
+  return 1.256637061 * Math.pow(10, -6);
+}
+
+/**
+ * Present the electric constant (vacuum permittivity) in F⋅m−1. Make sure to format in a scientific notation !!
+ * @return constant
+ * @customfunction
+ */
+function CONST_ELECTRICCONSTANT() { 
+  return 8.854187817 * Math.pow(10, -12);
+}
+
+/**
+ * Present the electric constant (vacuum permittivity) in Ω.
+ * @return constant
+ * @customfunction
+ */
+function CONST_CHARACTERISTICIMPEDANCEOFVACUUM() { 
+  return 376.730313461;
+}
+
+/**
+ * Present the Coulomb's constant in kg⋅m3⋅s−4⋅A−2.
+ * @return constant
+ * @customfunction
+ */
+function CONST_COULOMBSCONSTANT() { 
+  return 8987551787.36817;
+}
+
+/**
+ * Present the elementary charge constant in C. Make sure to format in a scientific notation !!
+ * @return constant
+ * @customfunction
+ */
+function CONST_ELEMENTARYCHARGE() { 
+  return 1.6021766208 * Math.pow(10, -19);
+}
+
+/**
+ * Present the Bohr magneton constant in J⋅T−1. Make sure to format in a scientific notation !!
+ * @return constant
+ * @customfunction
+ */
+function CONST_BOHRMAGNETON() { 
+  return 9.274009994 * Math.pow(10, -24);
+}
+
+/**
+ * Present the conductance quantum constant in S.
+ * @return constant
+ * @customfunction
+ */
+function CONST_CONDUNTANCEQUANTUM() { 
+  return 0.00007748091731;
+}
+
+/**
+ * Present the inverse conductance quantum constant in Ω.
+ * @return constant
+ * @customfunction
+ */
+function CONST_INVERSECONDUNTANCEQUANTUM() { 
+  return 12906.4037278 
+}
+
+/**
+ * Present the Josephson constant in Hz⋅V−1. Make sure to format in a scientific notation !!
+ * @return constant
+ * @customfunction
+ */
+function CONST_JOSEPHSONCONSTANT() { 
+  return 4.835978525 * Math.pow(10, 14);
+}
+
+/**
+ * Present the magnetic flux quantum constant in Wb. Make sure to format in a scientific notation !!
+ * @return constant
+ * @customfunction
+ */
+function CONST_MAGNETICFLUXQUANTUM() { 
+  return 2.067833831 * Math.pow(10, -15);
+}
+
+/**
+ * Present the nuclear magneton constant in J⋅T−1. Make sure to format in a scientific notation !!
+ * @return constant
+ * @customfunction
+ */
+function CONST_NUCLEARMAGNETON() { 
+  return 5.050783699 * Math.pow(10, -27);
+}
+
+/**
+ * Present the von Klitzing constant in Ω.
+ * @return constant
+ * @customfunction
+ */
+function CONST_VONKLITZINGCONSTANT() { 
+  return 25812.8074555;
+}
+
+/**
+ * Present the Bohr radius in m. Make sure to format in a scientific notation !!
+ * @return constant
+ * @customfunction
+ */
+function CONST_BOHRRADIUS() { 
+  return 5.2917721067 * Math.pow(10, -11);
+}
+
+/**
+ * Present the classical electron radius in m. Make sure to format in a scientific notation !!
+ * @return constant
+ * @customfunction
+ */
+function CONST_CLASSICALELECTRONRADIUS() { 
+  return 2.8179403227 * Math.pow(10, -15);
+}
+
+/**
+ * Present the electron mass in kg. Make sure to format in a scientific notation !!
+ * @return constant
+ * @customfunction
+ */
+function CONST_ELECTRONMASS() { 
+  return 9.10938356 * Math.pow(10, -31);
+}
+
+/**
+ * Present the Fermi coupling constant in GeV−2. Make sure to format in a scientific notation !!
+ * @return constant
+ * @customfunction
+ */
+function CONST_FERMICOUPLINGCONSTANT() { 
+  return 0.000011663787;
+}
+
+/**
+ * Present the fine-structure constant.
+ * @return constant
+ * @customfunction
+ */
+function CONST_FINESTRUCTURECONSTANT() { 
+  return 0.0072973525664;
+}
+
+/**
+ * Present the Hartree energy in J. Make sure to format in a scientific notation !!
+ * @return constant
+ * @customfunction
+ */
+function CONST_HARTREEENERGY() { 
+  return 4.359744650 * Math.pow(10, -18);
+}
+
+/**
+ * Present the proton mass in kg. Make sure to format in a scientific notation !!
+ * @return constant
+ * @customfunction
+ */
+function CONST_PROTONMASS() { 
+  return 1.672621898 * Math.pow(10, -27);
+}
+
+/**
+ * Present the quantum of circulation in m2⋅s−1.
+ * @return constant
+ * @customfunction
+ */
+function CONST_QUANTUMOFCIRCULATION() { 
+  return 0.00036369475486;
+}
+
+/**
+ * Present the Rydberg constant in m−1. 
+ * @return constant
+ * @customfunction
+ */
+function CONST_RYDBERGCONSTANT() { 
+  return 10973731.568508;
+}
+
+/**
+ * Present the Thomson cross section in m2. Make sure to format in a scientific notation !!
+ * @return constant
+ * @customfunction
+ */
+function CONST_THOMSONCROSSSECTION() { 
+  return 6.6524587158 * Math.pow(10, -29);
+}
+
+/**
+ * Present the weak mixing angle. 
+ * @return constant
+ * @customfunction
+ */
+function CONST_WEAKMIXINGANGLE() { 
+  return 0.2223;
+}
+
+/**
+ * Present the Efimov factor. 
+ * @return constant
+ * @customfunction
+ */
+function CONST_EFIMOVFACTOR() { 
+  return 22.7;
+}
+
+/**
+ * Present the atomic mass constant in kg. Make sure to format in a scientific notation !!
+ * @return constant
+ * @customfunction
+ */
+function CONST_ATOMICMASSCONSTANT() { 
+  return 1.660539040 * Math.pow(10, -27);
+}
+
+/**
+ * Present the Avogadro constant in mol-1. Make sure to format in a scientific notation !!
+ * @return constant
+ * @customfunction
+ */
+function CONST_AVOGADROCONSTANT() { 
+  return 6.022140857 * Math.pow(10, 23);
+}
+
+/**
+ * Present the Boltzmann constant in J⋅K−1. Make sure to format in a scientific notation !!
+ * @return constant
+ * @customfunction
+ */
+function CONST_BOLTZMANNCONSTANT() { 
+  return 1.38064852 * Math.pow(10, -23);
+}
+
+/**
+ * Present the Faraday constant in C⋅mol−1.
+ * @return constant
+ * @customfunction
+ */
+function CONST_FARADAYCONSTANT() { 
+  return 96485.33289;
+}
+
+/**
+ * Present the first radiation constant in W⋅m2. Make sure to format in a scientific notation !!
+ * @return constant
+ * @customfunction
+ */
+function CONST_FIRSTRADIATIONCONSTANT() { 
+  return 3.741771790 * Math.pow(10, -16);
+}
+
+/**
+ * Present the Loschmidt constant in m-3 at T = 273.15 K and p = 101.325 kPa.
+ * @return constant
+ * @customfunction
+ */
+function CONST_LOSCHMIDTCONSTANT() { 
+  return 2.6867811 * Math.pow(10, 25);
+}
+
+/**
+ * Present the gas constant in J⋅mol−1⋅K−1.
+ * @return constant
+ * @customfunction
+ */
+function CONST_GASCONSTANT() { 
+  return 8.3144598;
+}
+
+/**
+ * Present the molar Planck constant in J⋅s⋅mol−1. Make sure to format in a scientific notation !!
+ * @return constant
+ * @customfunction
+ */
+function CONST_MOLARPLANCKCONSTANT() { 
+  return 3.9903127110 * Math.pow(10, -10);
+}
+
+/**
+ * Present the molar volume of an ideal gas in m3⋅mol−1 at T = 273.15 K and p = 101.325 kPa.
+ * @return constant
+ * @customfunction
+ */
+function CONST_MOLARPLANCKCONSTANT() { 
+  return 0.022413962;
+}
+
+/**
+ * Present the Sackur–Tetrode constant in m3⋅mol−1 at T = 273.15 K and p = 101.325 kPa.
+ * @return constant
+ * @customfunction
+ */
+function CONST_SACKURTETRODECONSTANT() { 
+  return -1.1648714;
+}
+
+/**
+ * Present the second radiation constant in m⋅K.
+ * @return constant
+ * @customfunction
+ */
+function CONST_SECONDRADIATIONCONSTANT() { 
+  return 1.43877736 * Math.pow(10, -2);
+}
+
+/**
+ * Present the Stefan–Boltzmann constant in W⋅m−2⋅K−4.
+ * @return constant
+ * @customfunction
+ */
+function CONST_STEFANBOLTMANNCONSTANT() { 
+  return 5.670367 * Math.pow(10, -8);
+}
+
+/**
+ * Present the Wien displacement law constant in m⋅K.
+ * @return constant
+ * @customfunction
+ */
+function CONST_WIENDISPLACEMENTLAWCONSTANT() { 
+  return 2.8977729 * Math.pow(10, -3);
+}
+
+/**
+ * Present the Wien displacement law constant in m⋅K.
+ * @return constant
+ * @customfunction
+ */
+function CONST_WIENBONALENTROPYDISPLACEMENTLAWCONSTANT() { 
+  return 3.0029152 * Math.pow(10, -3);
+}
+
+/**
+ * Present the standard acceleration of gravity in m⋅s−2.
+ * @return constant
+ * @customfunction
+ */
+function CONST_STANDARDACCELERATIONOFGRAVITY() { 
+  return 9.80665 * Math.pow(10, -3);
+}
+
+/**
+ * Present the standard acceleration of gravity in Pa.
+ * @return constant
+ * @customfunction
+ */
+function CONST_STANDARATMOSPHERE() { 
+  return 101325;
+}
+
+/**
+ * Present the selected constant.
+ * @param {range} range Represents the CONSTANT, see list at https://sites.google.com/view/madebytopcontributors/custom-formulas/constants
+ * @return constant range
+ * @customfunction
+ */
+function CONSTANTS(range) {
+  range = range.map ? range : [[range]];
+  return range.map ( function ( row ) {
+    r = Number(row);
+    if(typeof r === 'number' && r) {
+      var c;
+      switch(r) {
+        case 1: 
+          c = CONST_PLANCKMASS();
+          break;
+        case 2:
+          c = CONST_PLANCKTIME();
+          break;
+        case 3:
+          c = CONST_PLANCKCHARGE();
+          break;
+        case 4:
+          c = CONST_PLANCKTEMPERATURE();
+          break;
+        case 5:
+          c = CONST_SPEEDOFLIGHTINVACUUM();
+          break;
+        case 6:
+          c = CONST_NEWTONIANCONSTANTOFGRAVITATION();
+          break;
+        case 7: 
+          c = CONST_PLANCKCONSTANT();
+          break;
+        case 8:
+          c = CONST_REDUCEDPLANCKCONSTANT(); 
+          break;
+        case 9:    
+          c = CONST_MAGNETICCONSTANT(); 
+          break;
+        case 10:    
+          c = CONST_ELECTRICCONSTANT(); 
+          break;
+        case 11:     
+          c = CONST_CHARACTERISTICIMPEDANCEOFVACUUM(); 
+          break;
+        case 12:      
+          c = CONST_COULOMBSCONSTANT(); 
+          break;
+        case 13:      
+          c = CONST_ELEMENTARYCHARGE(); 
+          break;
+        case 14:      
+          c = CONST_BOHRMAGNETON(); 
+          break;
+        case 15:      
+          c = CONST_CONDUNTANCEQUANTUM(); 
+          break;
+        case 16:      
+          c = CONST_INVERSECONDUNTANCEQUANTUM(); 
+          break;
+        case 17:      
+          c = CONST_JOSEPHSONCONSTANT(); 
+          break;
+        case 18:      
+          c = CONST_MAGNETICFLUXQUANTUM(); 
+          break;
+        case 19:      
+          c = CONST_NUCLEARMAGNETON(); 
+          break;
+        case 20:      
+          c = CONST_VONKLITZINGCONSTANT(); 
+          break;
+        case 21:      
+          c = CONST_BOHRRADIUS(); 
+          break;
+        case 22:      
+          c = CONST_CLASSICALELECTRONRADIUS(); 
+          break;
+        case 23:      
+          c = CONST_ELECTRONMASS(); 
+          break;
+        case 24:      
+          c = CONST_FERMICOUPLINGCONSTANT(); 
+          break;
+        case 25:      
+          c = CONST_FINESTRUCTURECONSTANT(); 
+          break;
+        case 26:      
+          c = CONST_HARTREEENERGY(); 
+          break;
+        case 27:      
+          c = CONST_PROTONMASS(); 
+          break;
+        case 28:      
+          c = CONST_QUANTUMOFCIRCULATION(); 
+          break;
+        case 29:      
+          c = CONST_RYDBERGCONSTANT(); 
+          break;      
+        case 30:      
+          c = CONST_THOMSONCROSSSECTION(); 
+          break;      
+        case 31:      
+          c = CONST_WEAKMIXINGANGLE(); 
+          break;      
+        case 32:      
+          c = CONST_EFIMOVFACTOR(); 
+          break;      
+        case 33:      
+          c = CONST_ATOMICMASSCONSTANT(); 
+          break;      
+        case 34:      
+          c = CONST_AVOGADROCONSTANT(); 
+          break;      
+        case 35:      
+          c = CONST_BOLTZMANNCONSTANT(); 
+          break;      
+        case 36:      
+          c = CONST_FARADAYCONSTANT(); 
+          break;      
+        case 37:      
+          c = CONST_FIRSTRADIATIONCONSTANT(); 
+          break;      
+        case 38:
+          c = CONST_LOSCHMIDTCONSTANT(); 
+          break;      
+        case 39:      
+          c = CONST_GASCONSTANT(); 
+          break;      
+        case 40:      
+          c = CONST_MOLARPLANCKCONSTANT(); 
+          break;      
+        case 41:      
+          c = CONST_MOLARPLANCKCONSTANT(); 
+          break;      
+        case 42:      
+          c = CONST_SACKURTETRODECONSTANT(); 
+          break;      
+        case 43:      
+          c = CONST_SECONDRADIATIONCONSTANT(); 
+          break;      
+        case 44:      
+          c = CONST_STEFANBOLTMANNCONSTANT(); 
+          break;      
+        case 45:      
+          c = CONST_WIENDISPLACEMENTLAWCONSTANT(); 
+          break;      
+        case 46:      
+          c = CONST_WIENBONALENTROPYDISPLACEMENTLAWCONSTANT(); 
+          break;      
+        case 47:      
+          c = CONST_STANDARDACCELERATIONOFGRAVITY(); 
+          break;
+        case 48:            
+          c = CONST_STANDARATMOSPHERE();
+          break;
+      }
+      return c;
+    } else {
+      throw "No number found !!";
+    }
+  });  
+}
