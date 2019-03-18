@@ -1,0 +1,25 @@
+/**
+* Display the range, mapped as you would do in JavaScript. 
+* @param {A:E} range The range or array to be mapped.
+* @param {"i > 2 ? cell : cell + 1"} operation internal keys are; row, i and cell, j.
+* return mapped range
+* @customfunction
+*/
+function JS_MAP(range, operation) {
+  return range.map ( function (row, i) {
+    return row.map ( function (cell, j) {
+      return eval(operation); 
+    })
+  });
+}
+
+/**
+* Display the range, sorted either ascendingly or descendingly. 
+* @param {A:E} range The range or array to be sorted.
+* @param {true|false} sort_order [optional] omitted or true = ascendingly, false = descendingly.
+* return sorted range
+* @customfunction
+*/
+function JS_SORT(range, sort_order) {
+  return (sort_order.length === 0 || sort_order === true) ? range.sort() :range.sort().reverse();
+}
