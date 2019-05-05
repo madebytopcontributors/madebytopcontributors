@@ -1,3 +1,6 @@
+// Author: Jacob Jan Tuinstra
+// https://en.wikipedia.org/wiki/Physical_constant
+
 /**
  * Present the Planck length in m. Make sure to format in a scientific notation !!
  * @return constant
