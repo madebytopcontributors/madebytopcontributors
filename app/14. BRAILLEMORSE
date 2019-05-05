@@ -1,0 +1,112 @@
+// Author: Jacob Jan Tuinstra
+// http://www.brailleauthority.org/ueb/symbols_list.pdf
+
+var brailleRef1 = "0123456789abcdefghijklmnopqrstuvwqyz.,?;!-' ";
+var brailleRef2 = [
+  '⠼⠚', '⠼⠁', '⠼⠃', '⠼⠉', '⠼⠙', '⠼⠑', '⠼⠋', '⠼⠛', '⠼⠓', '⠼⠊', 
+  '⠁', '⠃', '⠉', '⠙', '⠑', '⠋', '⠛', '⠓', '⠊', '⠚', '⠅', '⠇', '⠍', '⠝', '⠕', '⠏', '⠟', '⠗', '⠎', '⠞', '⠥', '⠧', '⠺', '⠭', '⠽', '⠵', 
+  '⠲', '⠂', '⠦', '⠆', '⠖', '⠤', '⠄'
+];
+
+/**
+ * @param {A2:B26} range The text to be converted into Braille code
+ * @param {"&" (default = "   ")} delimiter [optional] default value is "   " 
+ * @return Braille code
+ * @customfunction
+ */
+function TEXT2BRAILLE(range, delimiter) { 
+  delimiter = delimiter || '   ';
+  range = range.map ? range : [[range]];
+  return range.map ( function (row) {
+    return row.map ( function (cell) {
+      return Array.prototype.map.call(cell.toString().toLowerCase(), function ( letter ) {
+        var index = brailleRef1.indexOf(letter);
+        return index !== -1 ? (brailleRef1[index] == ' ' ? delimiter : brailleRef2[index]) : '#'; 
+      }).join('')
+    })
+  });
+}
+
+/**
+ * @param {A2:B26} range The Braille code to be converted into text
+ * @param {"&" (default = "   ")} delimiter [optional] default value is "   " 
+ * @return Text
+ * @customfunction
+ */
+function BRAILLE2TEXT(range, delimiter) {
+  delimiter = delimiter || '   '; 
+  range = range.map ? range : [[range]];
+  return range.map ( function ( row ) {
+    return row.map ( function (cell) {
+      return cell.toString().split(delimiter).map ( function ( brailleword ) {
+        // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf#Finding_all_the_occurrences_of_an_element
+        var array = brailleword.trim();
+        var element = '⠼';
+        var idx = array.indexOf(element);
+        if(idx !== -1) {
+          var indices = [];
+          while (idx != -1) {
+            indices.push(idx - indices.length);
+            idx = array.indexOf(element, idx + 1);
+          }
+          array = array.replace(/⠼/g, '');
+        }
+        return array.split('').map ( function ( brailleletter, i ) {
+          var index = brailleRef2.indexOf(brailleletter);
+          value = (Array.isArray(indices) && indices.indexOf(i) !== -1) ? index - 9 : brailleRef1[index]; 
+          return index !== -1 ? value :  '#'; 
+        }).join('')
+      }).join(' ')
+    })
+  })
+}
+
+// Author: Jacob Jan Tuinstra
+// source: https://www.itu.int/dms_pubrec/itu-r/rec/m/R-REC-M.1677-1-200910-I!!PDF-E.pdf
+
+var morseRef1 = "1234567890abcdeéfghijklmnopqrstuvwqyz.,:?'-/)(\"=@ ";
+var morseRef2 = [
+    '.----','..---','...--','....-','.....','-....','--...','---..','----.','-----','.-','-...','-.-.','-..','.','..-..','..-.','--.','....','..','.---','-.-','.-..','--',
+    '-.','---','.--.','--.-','.-.','...','-','..-','...-','.--','-..-','-.--','--..','.-.-.-','--..--','---...','..--..','.----.','-....-','-..-.','-.--.','-.--.-','.-..-.',
+    '-...-', '.--.-.'
+  ];
+
+/**
+ * @param {A2:B26} range The text to be converted into Morse code
+ * @param {'&' (default = "/")} delimiter [optional] default value is "/" 
+ * @return Morse code
+ * @customfunction
+ */
+function TEXT2MORSE(range, delimiter) { 
+  delimiter = delimiter || '/';
+  range = range.map ? range : [[range]];
+  return range.map ( function (row) {
+    return row.map ( function (cell) {
+      return Array.prototype.map.call(cell.toString().toLowerCase(), function ( letter ) {
+        var index = morseRef1.indexOf(letter);
+        return index !== -1 ? (morseRef1[index] == ' ' ? delimiter : morseRef2[index]) : '#'; 
+      }).join(' ')
+    })
+  });
+}
+
+/**
+ * @param {A2:B26} range The Morse code to be converted into text
+ * @param {'&' (default = "/")} delimiter [optional] default value is "/" 
+ * @return Text
+ * @customfunction
+ */
+function MORSE2TEXT(range, delimiter) {
+  delimiter = delimiter || '/'; 
+  range = range.map ? range : [[range]];
+  return range.map ( function (row) {
+    return row.map ( function (cell) { 
+      return cell.toString().split(delimiter).map ( function ( morseword ) {
+        return morseword.trim().split(' ').map ( function ( morseletter ) {
+          var index = morseRef2.indexOf(morseletter);
+          return index !== -1 ? morseRef1[index] : '#'; 
+        }).join('')
+      }).join(' ')
+    })
+  });
+}
