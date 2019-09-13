@@ -1,68 +1,37 @@
 // Author: Jacob Jan Tuinstra
 
-var Util = (function() {
-  'use strict';
-  var util = {};
+var Util = (function (util) {  
   
-  util.ss = SpreadsheetApp.getActiveSpreadsheet();
-  util.sh = util.ss.getActiveSheet();
-  util.maxRows = util.sh.getMaxRows();
-  util.maxColumns = util.sh.getMaxColumns();
-  util.ssname = util.ss.getName();
-  util.shname = util.sh.getName();
-  util.shs = util.ss.getSheets();
-  util.shindex = util.sh.getIndex();
-  util.locale = util.ss.getSpreadsheetLocale();
-  
-  util.cellsremainingsheet = function () {
-    return (Util.maxRows * Util.maxColumns) - Util.sh.getSheetValues(1, 1, -1, -1).reduce ( function (a, r) {
-      return a + r.filter( function (e) {
-        return e;
-      }).length;
-    }, 0);
-  }
+  util.ss = function () { return SpreadsheetApp.getActiveSpreadsheet(); } 
+  util.sh = function () { return util.ss().getActiveSheet(); }   
+  util.maxrows = function () { return util.sh().getMaxRows(); } 
+  util.maxcols = function () { return util.sh().getMaxColumns(); } 
+  util.ssname = function () { return util.ss().getName(); } 
+  util.shname = function () { return util.sh().getName(); } 
+  util.shs = function () { return util.ss().getSheets(); } 
+  util.shindex = function () { return util.sh().getIndex(); } 
+  util.shLoc = function () { return util.ss().getSpreadsheetLocale(); } 
+  util.shtimezone = function () { return util.ss().getSpreadsheetTimeZone(); }
+  util.ssurl = function () { return util.ss().getUrl(); }
+  util.ssid = function () { return util.ss().getId(); }
   
   return util;
-})();
-
-  if(Util.locale === "nl_NL") {
-    /**
-    * Test Nederlands
-    *
-    * @return Total un-used cell count
-    * @customfunction
-    */
-    function UTIL_BESCHIKBARECELLENINTAB() {
-      Util.cellsremainingsheet;
-    }
-  } else {
-    /**
-    * Show the remaining cells in the active sheet  
-    *
-    * @return Total un-used cell count
-    * @customfunction
-    */
-    function UTIL_CELLSREMAININGSHEET() {
-      Util.cellsremainingsheet;
-    }
-  }
     
-  
-  
-  
-///**
-//* Show the remaining cells in the active sheet  
-//*
-//* @return Total un-used cell count
-//* @customfunction
-//*/
-//function UTIL_CELLSREMAININGSHEET() {
-//  return (Util.maxRows * Util.maxColumns) - Util.sh.getSheetValues(1, 1, -1, -1).reduce ( function (a, r) {
-//    return a + r.filter( function (e) {
-//      return e;
-//    }).length;
-//  }, 0);   
-//}
+})({});
+
+/**
+* Show the remaining cells in the active sheet  
+*
+* @return Total un-used cell count
+* @customfunction
+*/
+function UTIL_CELLSREMAININGSHEET() {
+  return (Util.maxrows() * Util.maxcols()) - Util.sh().getSheetValues(1, 1, -1, -1).reduce ( function (a, r) {
+    return a + r.filter( function (e) {
+      return e;
+    }).length;
+  }, 0);
+}
 
 /**
  * Show the remaining cells throughout the whole spreadsheet  
@@ -71,7 +40,7 @@ var Util = (function() {
  * @customfunction
  */
 function UTIL_CELLSREMAININGSPREADSHEET() {
-  return Util.shs.reduce ( function (b, sh) {
+  return Util.shs().reduce ( function (b, sh) {
     return b + ((sh.getMaxRows() * sh.getMaxColumns()) - sh.getSheetValues(1, 1, -1, -1).reduce ( function (a, r) {
       return a + r.filter( function (e) {
         return e;
@@ -81,13 +50,13 @@ function UTIL_CELLSREMAININGSPREADSHEET() {
 }
 
 /**
- * Show the remaining cells counted towards the 2 million cell limit  
+ * Show the remaining cells counted towards the 5 million cell limit  
  *
- * @return Cells remaing
+ * @return Cells remaining
  * @customfunction
  */
 function UTIL_CELLSTOSPREADSHEETLIMIT() {
-  return 2000000 - UTIL_CELLSREMAININGSPREADSHEET();
+  return 5000000 - UTIL_CELLSREMAININGSPREADSHEET();
 }
 
 /**
@@ -97,7 +66,7 @@ function UTIL_CELLSTOSPREADSHEETLIMIT() {
  * @customfunction
  */
 function UTIL_SPREADSHEETNAME() {
-  return Util.ssname;
+  return Util.ssname();
 }
 
 /**
@@ -107,7 +76,7 @@ function UTIL_SPREADSHEETNAME() {
  * @customfunction
  */
 function UTIL_SHEETNAME() {
-  return Util.shname;
+  return Util.shname();
 }
 
 /**
@@ -117,7 +86,7 @@ function UTIL_SHEETNAME() {
  * @customfunction
  */
 function UTIL_TOTALSHEETS() {
-  return Util.shs.length;
+  return Util.shs().length;
 }
 
 /**
@@ -127,8 +96,39 @@ function UTIL_TOTALSHEETS() {
  * @customfunction
  */
 function UTIL_SHEETINDEX() {
-  return Util.shindex;
+  return Util.shindex();
 }
+
+/**
+ * Calculate the number of formulas used in the range
+ *
+ * @param {A2:B26} A1notation [optional] default value is sheet 
+ * @return Sum of formulas used in range
+ * @customfunction
+ */
+function UTIL_COUNTFORMULAS(A1notation) {
+  if(typeof A1notation !== 'string') {
+    throw "Please input a correct A1 notation.";
+  } else {
+    var data = A1notation ? Util.sh().getRange(A1notation) : Util.sh().getDataRange();  
+    return data.getFormulas().reduce ( function ( row, formulas ) {
+      return row + formulas.reduce ( function ( cell, formula ) {
+        return cell + (formula ? 1 : 0);
+      }, 0)
+    }, 0)
+  }
+}
+
+/**
+ * Retrieve the text of the formula used
+ * @param {string} A1notation "A1" or "A1:A5"
+ * @return Range of formula text
+ * @customfunction
+ */
+function UTIL_FORMULATEXT(A1notation) {
+  return Util.ss().getRange(A1notation).getFormulas();
+}
+
 
 /**
  * Write the string backwards
@@ -147,31 +147,59 @@ function UTIL_REVERSETEXT(textrange) {
 }
 
 /**
- * Calculate the number of formulas used in the range
+ * Retrieve a value throughout all sheets
  *
- * @param {A2:B26} A1notation [optional] default value is sheet 
- * @return Sum of formulas used in range
+ * @param {"A1"} textrange A1 notation to be fetched
+ * @return A range of values fetched throughout all sheets
  * @customfunction
  */
-function UTIL_COUNTFORMULAS(A1notation) {
-  if(typeof A1notation !== 'string') {
-    throw "Please input a correct A1 notation.";
-  } else {
-    var data = A1notation ? Util.sh.getRange(A1notation) : Util.sh.getDataRange();  
-    return data.getFormulas().reduce ( function ( row, formulas ) {
-      return row + formulas.reduce ( function ( cell, formula ) {
-        return cell + (formula ? 1 : 0);
-      }, 0)
-    }, 0)
-  }
+function UTIL_VALUESHEETS(textrange) {
+  return Util.shs().map ( function (sh) {    
+    return sh.getRange(textrange).getValue();
+  });
 }
 
 /**
- * Retrieve the text of the formula used
- * @param {A2:B26} A1notation "A1" or "A1:A5"
- * @return Range of formula text
+ * Write the sheets locale
+ *
+ * @return The sheets locale
  * @customfunction
  */
-function UTIL_FORMULATEXT(A1notation) {
-  return Util.ss.getRange(A1notation).getFormulas();
+function UTIL_GETLOCALE() {
+  return Util.shLoc();
 }
+
+/**
+ * Write the sheets time zone
+ *
+ * @return The sheets time zone
+ * @customfunction
+ */
+function UTIL_GETIMEZONE() {
+  return Util.shtimezone();
+}
+
+/**
+ * Write the spreadsheet url
+ *
+ * @return The spreadsheet url
+ * @customfunction
+ */
+function UTIL_GETURL() {
+  return Util.ssurl();
+}
+
+/**
+ * Write the spreadsheet id
+ *
+ * @return The spreadsheet id
+ * @customfunction
+ */
+function UTIL_GETID() {
+  return Util.ssid();
+}
+
+
+
+
+
