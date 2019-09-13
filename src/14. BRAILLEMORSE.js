@@ -1,10 +1,10 @@
 // Author: Jacob Jan Tuinstra
-//http://www.brailleauthority.org/ueb/symbols_list.pdf
+// http://www.brailleauthority.org/ueb/symbols_list.pdf
 
 var brailleRef1 = "0123456789abcdefghijklmnopqrstuvwqyz.,?;!-' ";
 var brailleRef2 = [
   '⠼⠚', '⠼⠁', '⠼⠃', '⠼⠉', '⠼⠙', '⠼⠑', '⠼⠋', '⠼⠛', '⠼⠓', '⠼⠊', 
-  '⠁', '⠃', '⠉', '⠙', '⠑', '⠋', '⠛', '⠓', '⠊', '⠚', '⠅', '⠇', '⠍', '⠝', '⠕', '⠏', '⠟', '⠗', '⠎', '⠞', '⠥', '⠧', '⠺', '⠭', '⠽', '⠵', // letters
+  '⠁', '⠃', '⠉', '⠙', '⠑', '⠋', '⠛', '⠓', '⠊', '⠚', '⠅', '⠇', '⠍', '⠝', '⠕', '⠏', '⠟', '⠗', '⠎', '⠞', '⠥', '⠧', '⠺', '⠭', '⠽', '⠵', 
   '⠲', '⠂', '⠦', '⠆', '⠖', '⠤', '⠄'
 ];
 
