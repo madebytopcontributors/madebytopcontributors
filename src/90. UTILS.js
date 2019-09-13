@@ -47,3 +47,8 @@ function transposeArray(a) {
     });
   });
 }
+
+// https://stackoverflow.com/questions/9716468
+function isNumeric_(n) {
+  return !isNaN(parseFloat(n)) && isFinite(n);
+}

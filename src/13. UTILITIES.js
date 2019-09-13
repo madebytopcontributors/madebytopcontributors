@@ -110,11 +110,12 @@ function UTIL_SPREADSHEETNAME() {
 /**
  * Show the sheet name in the active sheet
  *
+ * @param {number} [index] The index of the sheet
  * @return Sheet name
  * @customfunction
  */
-function UTIL_SHEETNAME() {
-  return Util.shname();
+function UTIL_SHEETNAME(index) {
+  return isNumeric_(index) ? Util.shs()[index].getName() : Util.shname();
 }
 
 /**
