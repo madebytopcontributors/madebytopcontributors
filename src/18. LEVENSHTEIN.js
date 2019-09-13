@@ -1,0 +1,76 @@
+// Author: Jacob Jan Tuinstra
+// source http://www.ripelacunae.net/projects/levenshtein/
+
+/**
+* Display the range, with the Levenshtein values. 
+* @param {A:E} sRange The first range of strings to be checked.
+* @param {A:E} tRange The second range of strings to be checked.
+* @param {true|false} matrix Show the matrix of the comparison.
+* return Levenshtein values
+* @customfunction
+*/
+function LEVENSHTEINDISTANCE(sRange, tRange, matrix) {
+  sRange = sRange.map ? sRange : [[sRange]];
+  tRange = tRange.map ? tRange : [[tRange]];
+  if(sRange[0].length > 1 || tRange[0].length > 1) {
+    throw "Only one column ranges can be evaluated !!";
+  } else if(sRange.length !== tRange.length && !(matrix)) {
+    throw "Ranges are of different length !!";
+  } else if(typeof sRange === "object" && sRange.length > 1 && matrix) {
+    throw "Matrix can only be shown if single row !!";
+  } else {
+    var e = sRange.map( function (s, z) {
+      var t = tRange[z];
+      var sLen = typeof s[0] === "number" ? s[0].toString().length : s[0].length;
+      var tLen = typeof t[0] === "number" ? t[0].toString().length : t[0].length;
+      
+      if(sLen === 0 && tLen === 0) {
+        return;
+      }      
+      if(sLen === 0) {
+        return tLen;
+      }
+      if(tLen === 0) {
+        return sLen;
+      } 
+         
+      var d = Array.apply(null, Array(tLen + 1)).map(function (ta, i, arrT) { 
+        return Array.apply(null, Array(sLen + 1)).map( function (sa, j, arrS) {
+          return j === 0 ? i : (i === 0 ? j : null);
+        })
+      });
+      
+      Array.prototype.map.call(t.toString().toLowerCase(), function (tLet, k) {
+        return Array.prototype.map.call(s.toString().toLowerCase(), function (sLet, l) {
+          return d[k + 1][l + 1] = Math.min(d[k][l + 1]+1, d[k + 1][l]+1, d[k][l] + ((sLet === tLet) ? 0 : 1));
+        })
+      });
+      
+      return matrix ? d : d[tLen][sLen];
+    });
+    
+    // option to show the corresponding table
+    if(matrix) {
+      if(sRange[0][0] && tRange[0][0]) {
+        e[0][0].unshift("");
+        Array.prototype.map.call(tRange[0].toString().toLowerCase(), function (tL, k) {
+          return e[0][k + 1].unshift(tL); 
+        });
+        
+        e[0].unshift( 
+          Array.prototype.map.call(sRange[0].toString().toLowerCase(), function (sL) {
+            return sL;
+          })
+        ); 
+        e[0][0].unshift("");
+        e[0][0].unshift("");      
+        
+        return e[0];
+      } else {
+        throw "Cannot show matrix";
+      }
+    }
+    
+    return e;
+  }
+}
