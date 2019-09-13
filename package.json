@@ -4,13 +4,7 @@
   "description": "madebytopcontributors",
   "main": "src/Code.gs",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "clear:after": "rm ./.clasp.json",
-    "clear:src": "rm -rf ./src/",
-    "push:dev": "cp settings/.clasp.dev.json .clasp.json && clasp push; npm run clear:after",
-    "push:prod": "cp settings/.clasp.prod.json .clasp.json && clasp push; npm run clear:after",
-    "pull:dev": "npm run clear:src && cp settings/.clasp.dev.json .clasp.json && clasp pull; npm run clear:after",
-    "pull:prod": "npm run clear:src && cp settings/.clasp.prod.json .clasp.json && clasp pull; npm run clear:after"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
