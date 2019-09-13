@@ -2,16 +2,28 @@
 
 ## Version
 
-<div style="width: 450px;">The latest version is No. 7. See our website for an (historic) overview of <a href="https://sites.google.com/view/madebytopcontributors/custom-formulas/whats-new">what's new</a> or from within the menu.</div> 
+<div style="width: 450px;">The latest version is No. 11. See our website for an (historic) overview of <a href="https://sites.google.com/view/madebytopcontributors/custom-formulas/whats-new">what's new</a> or from within the menu.</div> 
+
+## New additions
+
+- TEXT2CHARACTER formula, to quickly retrieve all characters from a string.
+- UTIL_REVERSETEXT formula is now also available under TEXT2REVERSE.
+- UTIL_VALUESHEETS formula will capture the value of a particular cell range throughout all sheets.
+- UTIL_GETLOCALE formula will capture the locale setting of the spreadsheet
+- UTIL_GETTIMEZONE formula will capture the timezone of the spreadsheet
+- UTIL_GETURL formula will retieve the URL of the spreadsheet
+- JS_MAP formula to modify a range the way JavaScript can do.
+- JS_SORT formula to sort a range the way JavaScript would do.
+- LEVENSHTEINDISTANCE formula to determine the "distance" between two words. 
 
 ## Utilities 
 
-We created a formula that can retrieve the formula text as used:
-
-    =UTIL_FORMULATEXT() 
+Changed help text for the UTIL_FORMULATEXT() to make sure the A1Notation is a string  
+(ht: Gregory E), but in the meantime Google added the native support for retrieving  
+the formula texts into Google Sheets.
  
-Outputs the formula text.
 If you want to have more utilities added, please use the [Google Forms][1] on our website.
 
 [1]: https://sites.google.com/view/madebytopcontributors/report-an-issue
+
 
