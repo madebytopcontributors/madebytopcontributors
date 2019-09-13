@@ -10,7 +10,9 @@ var CONST_TEXT = 'CONSTANT formulas';
 var UTIL_TEXT = 'UTILITIES formulas';
 var ROWTOTALS_TEXT = 'ROWTOTAL formula';
 var MORSE_TEXT = 'MORSE formula'
-var BRAILLEMORSE_TEXT = 'BRAILLE & MORSE formula';
+var BRAILLEMORSE_TEXT = 'BRAILLE & MORSE formulas';
+var JS_TEXT = 'JAVASCRIPT formulas';
+var LEVENSHTEIN_TEXT = 'LEVENSHTEIN distance formula';
 var WHATSNEW_TEXT = "What's new";
 var PRIVACY_POLICY_TEXT = 'Privacy policy';
 var STD_WIDTH = 645;
@@ -27,21 +29,13 @@ function onOpen(e) {
     .addItem(CONST_TEXT, 'constantsInfo')
     .addItem(ROWTOTALS_TEXT, 'rowtotalsInfo') 
     .addItem(BRAILLEMORSE_TEXT, 'braillemorseInfo') 
+    .addItem(LEVENSHTEIN_TEXT, 'levenshteinInfo') 
+    .addItem(JS_TEXT, 'jsInfo') 
     .addItem(UTIL_TEXT, 'utilInfo') 
     .addSeparator()
     .addItem(WHATSNEW_TEXT, 'whatsnewInfo')  
     .addItem(PRIVACY_POLICY_TEXT, 'privacypolicyInfo')  
-    .addToUi();  
-  
-  // check user vs. script properties and show a modal dialogue window when Add-on was updated  
-  var userProp = PropertiesService.getUserProperties();
-  var scriptVer = PropertiesService.getScriptProperties().getProperty('FORMULAS_SCRIPT_VERSION');
-  var userVer = userProp.getProperty('FORMULAS_SCRIPT_VERSION');
-  
-  if(!userVer || userVer !== scriptVer) {
-    userProp.setProperty('FORMULAS_SCRIPT_VERSION',scriptVer);
-    whatsnewInfo();
-  }    
+    .addToUi(); 
 }
 
 /**
@@ -50,14 +44,6 @@ function onOpen(e) {
 function onInstall(e) {
   onOpen(e);
 }
-
-function testLocale() {
-  Logger.log(SpreadsheetApp.getActiveSpreadsheet().getSpreadsheetLocale());
-}
-
-
-
-
 
 /**
 * The best way to create a modal window with description of module is create a html file with markdown content.
@@ -89,7 +75,7 @@ function constantsInfo() {
 * Opens dialog for Utilities custom formula
 */
 function utilInfo() {
-  showDialog(include_('13. UTILITIES.MD'), UTIL_TEXT, STD_WIDTH, 430);
+  showDialog(include_('13. UTILITIES.MD'), UTIL_TEXT, STD_WIDTH, 550);
 }
 
 /**
@@ -107,10 +93,24 @@ function braillemorseInfo() {
 }
 
 /**
+* Opens dialog for the Levenshtein distance custom formula
+*/
+function levenshteinInfo() {
+  showDialog(include_('18. LEVENSHTEIN.MD'), LEVENSHTEIN_TEXT, STD_WIDTH, 530);
+}
+
+/**
+* Opens dialog for the Java Script custom formulas
+*/
+function jsInfo() {
+  showDialog(include_('19. JAVASCRIPT.MD'), JS_TEXT, STD_WIDTH, 350);
+}
+
+/**
 * Opens dialog to present what's new
 */
-function whatsnewInfo() {
-  showDialog(include_('97. WHATSNEW.MD'), WHATSNEW_TEXT, STD_WIDTH, 350);   
+function whatsnewInfo() {  
+  showDialog(include_('97. WHATSNEW.MD'), WHATSNEW_TEXT, STD_WIDTH, 500);   
 }
 
 /**
