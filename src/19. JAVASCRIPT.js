@@ -33,16 +33,3 @@ function JS_MAP(range, operation, iterator) {
 function JS_SORT(range, sort_order) { 
   return arguments.length === 1 ? range.sort() : (sort_order.length === 0 || sort_order !== false ? range.sort() : range.sort().reverse());
 }
-
-/**
-* Display the range, sorted either ascendingly or descendingly. 
-* @param {A:E} range The range or array to be sorted
-* @param {true|false} sort_order [optional] omitted or true = ascendingly, false = descendingly
-* return sorted range
-* @customfunction
-*/
-function JS_REGEX(range) {
-  var t = "هذه مجرد رسالة تجريبية.";
-  Logger.log(/\p{Arabic}/.exec(t));
-  
-}

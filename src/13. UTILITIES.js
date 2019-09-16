@@ -110,12 +110,20 @@ function UTIL_SPREADSHEETNAME() {
 /**
  * Show the sheet name in the active sheet
  *
- * @param {number} [index] The index of the sheet
+ * @param {number} index [optional] The index of the sheet
  * @return Sheet name
  * @customfunction
  */
 function UTIL_SHEETNAME(index) {
-  return isNumeric_(index) ? Util.shs()[index].getName() : Util.shname();
+  if(isNumeric_(index)) {
+     if(index <= (Util.shs().length - 1) && index >= 0) {
+       return Util.shs()[index].getName();
+     } else {
+       throw 'index out of bound';
+     }
+  } else {
+    return Util.shname();
+  }
 }
 
 /**
@@ -164,6 +172,8 @@ function UTIL_COUNTFORMULAS(A1notation) {
 }
 
 /**
+ * == UPDATE ==
+ * Google Sheets has FORMULATEXT natively available.
  * Retrieve the text of the formula used
  * @param {string} A1notation "A1" or "A1:A5"
  * @return Range of formula text

@@ -9,7 +9,6 @@ var SQL_TEXT = 'SQL JOIN formulas';
 var CONST_TEXT = 'CONSTANT formulas';
 var UTIL_TEXT = 'UTILITIES formulas';
 var ROWTOTALS_TEXT = 'ROWTOTAL formula';
-// var MORSE_TEXT = 'MORSE formula' // not used anywhere
 var BRAILLEMORSE_TEXT = 'BRAILLE & MORSE formulas';
 var JS_TEXT = 'JAVASCRIPT formulas';
 var LEVENSHTEIN_TEXT = 'LEVENSHTEIN distance formula';
