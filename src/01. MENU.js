@@ -101,7 +101,7 @@ function braillemorseInfo() {
  * Opens dialog for the Levenshtein distance custom formula
  */
 function levenshteinInfo() {
-  showDialog(include_('18. LEVENSHTEIN.MD'), LEVENSHTEIN_TEXT, STD_WIDTH, 530);
+  showDialog(include_('18. LEVENSHTEIN.MD'), LEVENSHTEIN_TEXT, STD_WIDTH, 350);
 }
 
 /**
