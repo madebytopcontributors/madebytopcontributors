@@ -52,3 +52,23 @@ function transposeArray(a) {
 function isNumeric_(n) {
   return !isNaN(parseFloat(n)) && isFinite(n);
 }
+
+//https://medium.com/@jeffrey.allen.lewis/javascript-algorithms-explained-binary-search-25064b896470
+function binarySearch_(array, target){
+  var startIndex = 0;
+  var endIndex = array.length - 1;
+  while(startIndex <= endIndex) {
+    var middleIndex = Math.floor((startIndex + endIndex) / 2);
+    var arrMid = array[middleIndex];
+    if(target === arrMid) {
+      return middleIndex;
+    }
+    if(target > arrMid) {
+      startIndex = middleIndex + 1;
+    }
+    if(target < arrMid) {
+      endIndex = middleIndex - 1;
+    }
+  }
+  throw 'Error';
+}

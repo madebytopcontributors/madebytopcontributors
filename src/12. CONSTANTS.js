@@ -375,7 +375,7 @@ function CONST_MOLARPLANCKCONSTANT() {
  * @return constant
  * @customfunction
  */
-function CONST_MOLARPLANCKCONSTANT() { 
+function CONST_MOLARPVOLUME() { 
   return 0.022413962;
 }
 
@@ -576,7 +576,7 @@ function CONSTANTS(range) {
           c = CONST_MOLARPLANCKCONSTANT(); 
           break;      
         case 41:      
-          c = CONST_MOLARPLANCKCONSTANT(); 
+          c = CONST_MOLARVOLUME(); 
           break;      
         case 42:      
           c = CONST_SACKURTETRODECONSTANT(); 

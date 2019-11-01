@@ -1,5 +1,4 @@
 /* globals isNumeric_ */
-
 // Author: Jacob Jan Tuinstra
 
 var Util = (function(util) {
