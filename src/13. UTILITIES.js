@@ -1,3 +1,5 @@
+/* globals isNumeric_ */
+
 // Author: Jacob Jan Tuinstra
 
 var Util = (function(util) {
@@ -64,6 +66,7 @@ function UTIL_CELLSREMAININGSHEET() {
   );
 }
 
+/* exported UTIL_CELLSREMAININGSPREADSHEET */
 /**
  * Show the remaining cells throughout the whole spreadsheet
  *
@@ -87,6 +90,7 @@ function UTIL_CELLSREMAININGSPREADSHEET() {
   }, 0);
 }
 
+/* exported UTIL_CELLSTOSPREADSHEETLIMIT */
 /**
  * Show the remaining cells counted towards the 5 million cell limit
  *
@@ -97,6 +101,7 @@ function UTIL_CELLSTOSPREADSHEETLIMIT() {
   return 5000000 - UTIL_CELLSREMAININGSPREADSHEET();
 }
 
+/* exported UTIL_SPREADSHEETNAME */
 /**
  * Show the spreadsheet name
  *
@@ -107,6 +112,7 @@ function UTIL_SPREADSHEETNAME() {
   return Util.ssname();
 }
 
+/* exported UTIL_SHEETNAME */
 /**
  * Show the sheet name in the active sheet
  *
@@ -115,17 +121,17 @@ function UTIL_SPREADSHEETNAME() {
  * @customfunction
  */
 function UTIL_SHEETNAME(index) {
-  if(isNumeric_(index)) {
-     if(index <= (Util.shs().length - 1) && index >= 0) {
-       return Util.shs()[index].getName();
-     } else {
-       throw 'index out of bound';
-     }
+  if (isNumeric_(index)) {
+    if (index <= Util.shs().length - 1 && index >= 0) {
+      return Util.shs()[index].getName();
+    } else {
+      throw new Error('index out of bound');
+    }
   } else {
     return Util.shname();
   }
 }
-
+/* exported UTIL_TOTALSHEETS */
 /**
  * Show the number of sheets present in the spreadsheet
  *
@@ -136,6 +142,7 @@ function UTIL_TOTALSHEETS() {
   return Util.shs().length;
 }
 
+/* exported UTIL_SHEETINDEX */
 /**
  * Show the index of the active sheet (1-based)
  *
@@ -146,6 +153,7 @@ function UTIL_SHEETINDEX() {
   return Util.shindex();
 }
 
+/* exported UTIL_COUNTFORMULAS */
 /**
  * Calculate the number of formulas used in the range
  *
@@ -155,7 +163,7 @@ function UTIL_SHEETINDEX() {
  */
 function UTIL_COUNTFORMULAS(A1notation) {
   if (typeof A1notation !== 'string') {
-    throw 'Please input a correct A1 notation.';
+    throw new Error('Please input a correct A1 notation.');
   } else {
     var data = A1notation
       ? Util.sh().getRange(A1notation)
@@ -171,6 +179,7 @@ function UTIL_COUNTFORMULAS(A1notation) {
   }
 }
 
+/* exported UTIL_FORMULATEXT */
 /**
  * == UPDATE ==
  * Google Sheets has FORMULATEXT natively available.
@@ -185,6 +194,7 @@ function UTIL_FORMULATEXT(A1notation) {
     .getFormulas();
 }
 
+/* exported UTIL_REVERSETEXT */
 /**
  * Write the string backwards
  *
@@ -206,6 +216,7 @@ function UTIL_REVERSETEXT(textrange) {
   });
 }
 
+/* exported UTIL_VALUESHEETS */
 /**
  * Retrieve a value throughout all sheets
  *
@@ -219,6 +230,7 @@ function UTIL_VALUESHEETS(textrange) {
   });
 }
 
+/* exported UTIL_GETLOCALE */
 /**
  * Write the sheets locale
  *
@@ -229,6 +241,7 @@ function UTIL_GETLOCALE() {
   return Util.shLoc();
 }
 
+/* exported UTIL_GETIMEZONE */
 /**
  * Write the sheets time zone
  *
@@ -239,6 +252,7 @@ function UTIL_GETIMEZONE() {
   return Util.shtimezone();
 }
 
+/* exported UTIL_GETURL */
 /**
  * Write the spreadsheet url
  *
@@ -249,6 +263,7 @@ function UTIL_GETURL() {
   return Util.ssurl();
 }
 
+/* exported UTIL_GETID */
 /**
  * Write the spreadsheet id
  *
@@ -257,4 +272,17 @@ function UTIL_GETURL() {
  */
 function UTIL_GETID() {
   return Util.ssid();
+}
+
+/* exported UTIL_SHEETS */
+/**
+ *
+ * @return {Array.<Array>}
+ * @customfunction
+ */
+function UTIL_SHEETS(method) {
+  var methodName = 'get' + method[0].toUpperCase() + method.slice(1);
+  return Util.shs().map(function(sh) {
+    return sh[methodName]();
+  });
 }
