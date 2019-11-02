@@ -177,7 +177,6 @@ function includeMD_(filename) {
       filename.split(/\.md/i)[0],
       locale
     );
-    SpreadsheetApp.getActive().toast(title, '', -1);
     htmlTemplate = HtmlService.createTemplateFromFile(title);
   } catch (err) {
     htmlTemplate = HtmlService.createTemplateFromFile(filename);
