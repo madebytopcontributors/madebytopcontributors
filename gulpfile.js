@@ -2,6 +2,9 @@
 const gulp = require('gulp');
 const spawn = require('child_process').spawn;
 const del = require('del');
+const rename = require('gulp-rename');
+const replace = require('gulp-replace');
+const prettier = require('gulp-prettier');
 
 /**
  * Cleans build
@@ -23,6 +26,20 @@ gulp.task('clasp', function(cb) {
     cb(code);
   });
 });
+
+/**
+ * Specs
+ */
+gulp.task('iso_9', function iso9() {
+  return gulp
+    .src('./node_modules/iso_9/translit.js')
+    .pipe(replace('module.exports = translit;', ''))
+    .pipe(prettier())
+    .pipe(rename('81. FORMULAS TRANSLIT.js'))
+    .pipe(gulp.dest('build'));
+});
+
+gulp.task('specs', gulp.series('iso_9'));
 
 gulp.task('devPrep', function devPrep() {
   return gulp.src('./settings/dev/.clasp.json').pipe(gulp.dest('./'));
@@ -53,7 +70,7 @@ gulp.task('preBuild', function devPrep() {
  */
 gulp.task(
   'dev',
-  gulp.series('clean', 'devPrep', 'preBuild', 'devassets', 'clasp')
+  gulp.series('clean', 'specs', 'devPrep', 'preBuild', 'devassets', 'clasp')
 );
 
 /**
@@ -61,7 +78,7 @@ gulp.task(
  */
 gulp.task(
   'build',
-  gulp.series('clean', 'buildPrep', 'preBuild', 'prodassets', 'clasp')
+  gulp.series('clean', 'specs', 'buildPrep', 'preBuild', 'prodassets', 'clasp')
 );
 
 /**
