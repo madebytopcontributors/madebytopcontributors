@@ -11,6 +11,7 @@ var UTIL_TEXT = 'UTILITIES formulas';
 var ROWTOTALS_TEXT = 'ROWTOTAL formula';
 var BRAILLEMORSE_TEXT = 'BRAILLE & MORSE formulas';
 var JS_TEXT = 'JAVASCRIPT formulas';
+var FORMULAS_TEXT = 'Formulas';
 var LEVENSHTEIN_TEXT = 'LEVENSHTEIN distance formula';
 var WHATSNEW_TEXT = "What's new";
 var PRIVACY_POLICY_TEXT = 'Privacy policy';
@@ -31,6 +32,7 @@ function onOpen(e) {
     .addItem(BRAILLEMORSE_TEXT, 'braillemorseInfo')
     .addItem(LEVENSHTEIN_TEXT, 'levenshteinInfo')
     .addItem(JS_TEXT, 'jsInfo')
+    .addItem(FORMULAS_TEXT, 'formulas')
     .addItem(UTIL_TEXT, 'utilInfo')
     .addSeparator()
     .addItem(WHATSNEW_TEXT, 'whatsnewInfo')
@@ -112,6 +114,13 @@ function jsInfo() {
 }
 
 /**
+ * Opens dialog for the Java Script custom formulas
+ */
+function formulas() {
+  showDialog(includeMD_('80. FORMULAS.MD'), FORMULAS_TEXT, STD_WIDTH, 350);
+}
+
+/**
  * Opens dialog to present what's new
  */
 function whatsnewInfo() {
@@ -154,5 +163,24 @@ function showDialog(markdown, title, width, height) {
  * @private
  */
 function include_(filename) {
-  return HtmlService.createHtmlOutputFromFile(filename).getContent();
+  return HtmlService.createTemplateFromFile(filename)
+    .evaluate()
+    .getContent();
+}
+
+function includeMD_(filename) {
+  var locale = Session.getActiveUserLocale();
+  var htmlTemplate;
+  try {
+    var title = Utilities.formatString(
+      '%s.%s.MD',
+      filename.split(/\.md/i)[0],
+      locale
+    );
+    SpreadsheetApp.getActive().toast(title, '', -1);
+    htmlTemplate = HtmlService.createTemplateFromFile(title);
+  } catch (err) {
+    htmlTemplate = HtmlService.createTemplateFromFile(filename);
+  }
+  return htmlTemplate.evaluate().getContent();
 }
