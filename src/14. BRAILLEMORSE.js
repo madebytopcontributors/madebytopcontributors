@@ -1,7 +1,7 @@
 // Author: Jacob Jan Tuinstra
 // http://www.brailleauthority.org/ueb/symbols_list.pdf
 
-var brailleRef1 = "0123456789abcdefghijklmnopqrstuvwqyz.,?;!-' ";
+var brailleRef1 = "0123456789abcdefghijklmnopqrstuvwxyz.,?;!-' ";
 var brailleRef2 = [
   '⠼⠚', '⠼⠁', '⠼⠃', '⠼⠉', '⠼⠙', '⠼⠑', '⠼⠋', '⠼⠛', '⠼⠓', '⠼⠊', 
   '⠁', '⠃', '⠉', '⠙', '⠑', '⠋', '⠛', '⠓', '⠊', '⠚', '⠅', '⠇', '⠍', '⠝', '⠕', '⠏', '⠟', '⠗', '⠎', '⠞', '⠥', '⠧', '⠺', '⠭', '⠽', '⠵', 
@@ -64,7 +64,7 @@ function BRAILLE2TEXT(range, delimiter) {
 // Author: Jacob Jan Tuinstra
 // source: https://www.itu.int/dms_pubrec/itu-r/rec/m/R-REC-M.1677-1-200910-I!!PDF-E.pdf
 
-var morseRef1 = "1234567890abcdeéfghijklmnopqrstuvwqyz.,:?'-/)(\"=@ ";
+var morseRef1 = "1234567890abcdeéfghijklmnopqrstuvwxyz.,:?'-/)(\"=@ ";
 var morseRef2 = [
     '.----','..---','...--','....-','.....','-....','--...','---..','----.','-----','.-','-...','-.-.','-..','.','..-..','..-.','--.','....','..','.---','-.-','.-..','--',
     '-.','---','.--.','--.-','.-.','...','-','..-','...-','.--','-..-','-.--','--..','.-.-.-','--..--','---...','..--..','.----.','-....-','-..-.','-.--.','-.--.-','.-..-.',
