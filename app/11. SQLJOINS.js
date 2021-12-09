@@ -22,7 +22,7 @@ var CROSS = 'CROSS',
  * @customfunction
  */
 function SQLCROSSJOIN(range1, pk1, range2, pk2, opt_header) {
-  return sqlJoin(range1, pk1, range2, pk2, opt_header, CROSS);
+  return sqlJoin(range1, pk1, range2, pk2, opt_header, null, CROSS);
 }  
 
 /**
@@ -33,11 +33,12 @@ function SQLCROSSJOIN(range1, pk1, range2, pk2, opt_header) {
  * @param {C1:D26} range2 second data range
  * @param {number|string} pk2 primairy key of the second data range 
  * @param {boolean} opt_header use TRUE to include a header range
+ * @param {boolean=false} empty_pk use TRUE to start considering empty primary keys as individual separate keys
  * @return The corresonding SQL join table
  * @customfunction
  */
-function SQLINNERJOIN(range1, pk1, range2, pk2, opt_header) {
-  return sqlJoin(range1, pk1, range2, pk2, opt_header, INNER);
+function SQLINNERJOIN(range1, pk1, range2, pk2, opt_header, empty_pk) {
+  return sqlJoin(range1, pk1, range2, pk2, opt_header, empty_pk, INNER);
 }  
 
 /**
@@ -48,11 +49,12 @@ function SQLINNERJOIN(range1, pk1, range2, pk2, opt_header) {
  * @param {C1:D26} range2 second data range
  * @param {number|string} pk2 primairy key of the second data range 
  * @param {boolean} opt_header use TRUE to include a header range
+ * @param {boolean=false} empty_pk use TRUE to start considering empty primary keys as individual separate keys
  * @return The corresonding SQL join table
  * @customfunction
  */
-function SQLLEFTJOIN(range1, pk1, range2, pk2, opt_header) {
-  return sqlJoin(range1, pk1, range2, pk2, opt_header, LEFT);
+function SQLLEFTJOIN(range1, pk1, range2, pk2, opt_header, empty_pk) {
+  return sqlJoin(range1, pk1, range2, pk2, opt_header, empty_pk, LEFT);
 }  
 
 /**
@@ -63,11 +65,12 @@ function SQLLEFTJOIN(range1, pk1, range2, pk2, opt_header) {
  * @param {C1:D26} range2 second data range
  * @param {number|string} pk2 primairy key of the second data range 
  * @param {boolean} opt_header use TRUE to include a header range
+ * @param {boolean=false} empty_pk use TRUE to start considering empty primary keys as individual separate keys
  * @return The corresonding SQL join table
  * @customfunction
  */
-function SQLRIGHTJOIN(range1, pk1, range2, pk2, opt_header) {
-  return sqlJoin(range1, pk1, range2, pk2, opt_header, RIGHT);
+function SQLRIGHTJOIN(range1, pk1, range2, pk2, opt_header, empty_pk) {
+  return sqlJoin(range1, pk1, range2, pk2, opt_header, empty_pk, RIGHT);
 }  
 
 /**
@@ -78,11 +81,12 @@ function SQLRIGHTJOIN(range1, pk1, range2, pk2, opt_header) {
  * @param {C1:D26} range2 second data range
  * @param {number|string} pk2 primairy key of the second data range 
  * @param {boolean} opt_header use TRUE to include a header range
+ * @param {boolean=false} empty_pk use TRUE to start considering empty primary keys as individual separate keys
  * @return The corresonding SQL join table
  * @customfunction
  */
-function SQLOUTERJOIN(range1, pk1, range2, pk2, opt_header) {
-  return sqlJoin(range1, pk1, range2, pk2, opt_header, OUTER);
+function SQLOUTERJOIN(range1, pk1, range2, pk2, opt_header, empty_pk) {
+  return sqlJoin(range1, pk1, range2, pk2, opt_header, empty_pk, OUTER);
 }  
 
 /**
@@ -93,11 +97,12 @@ function SQLOUTERJOIN(range1, pk1, range2, pk2, opt_header) {
  * @param {C1:D26} range2 second data range
  * @param {number|string} pk2 primairy key of the second data range 
  * @param {boolean} opt_header use TRUE to include a header range
+ * @param {boolean=false} empty_pk use TRUE to start considering empty primary keys as individual separate keys
  * @return The corresonding SQL join table
  * @customfunction
  */
-function SQLLEFTEXCLUDINGJOIN(range1, pk1, range2, pk2, opt_header) {
-  return sqlJoin(range1, pk1, range2, pk2, opt_header, LEFTEX);
+function SQLLEFTEXCLUDINGJOIN(range1, pk1, range2, pk2, opt_header, empty_pk) {
+  return sqlJoin(range1, pk1, range2, pk2, opt_header, empty_pk, LEFTEX);
 }  
 
 /**
@@ -108,11 +113,12 @@ function SQLLEFTEXCLUDINGJOIN(range1, pk1, range2, pk2, opt_header) {
  * @param {C1:D26} range2 second data range
  * @param {number|string} pk2 primairy key of the second data range 
  * @param {boolean} opt_header use TRUE to include a header range
+ * @param {boolean=false} empty_pk use TRUE to start considering empty primary keys as individual separate keys
  * @return The corresonding SQL join table
  * @customfunction
  */
-function SQLRIGHTEXCLUDINGJOIN(range1, pk1, range2, pk2, opt_header) {
-  return sqlJoin(range1, pk1, range2, pk2, opt_header, RIGHTEX);
+function SQLRIGHTEXCLUDINGJOIN(range1, pk1, range2, pk2, opt_header, empty_pk) {
+  return sqlJoin(range1, pk1, range2, pk2, opt_header, empty_pk, RIGHTEX);
 }  
 
 /**
@@ -123,14 +129,15 @@ function SQLRIGHTEXCLUDINGJOIN(range1, pk1, range2, pk2, opt_header) {
  * @param {C1:D26} range2 second data range
  * @param {number|string} pk2 primairy key of the second data range 
  * @param {boolean} opt_header use TRUE to include a header range
+ * @param {boolean=false} empty_pk use TRUE to start considering empty primary keys as individual separate keys
  * @return The corresonding SQL join table
  * @customfunction
  */
-function SQLOUTEREXCLUDINGJOIN(range1, pk1, range2, pk2, opt_header) {
-  return sqlJoin(range1, pk1, range2, pk2, opt_header, OUTEREX);
+function SQLOUTEREXCLUDINGJOIN(range1, pk1, range2, pk2, opt_header, empty_pk) {
+  return sqlJoin(range1, pk1, range2, pk2, opt_header, empty_pk, OUTEREX);
 }  
 
-function sqlJoin(range1, pk1, range2, pk2, opt_header, type) {  
+function sqlJoin(range1, pk1, range2, pk2, opt_header, empty_pk, type) {  
   var ind1 = pk1 - 1, ind2 = pk2 - 1, std = null; 
   var FIRST = 'first', SECOND = 'second';
   
@@ -142,6 +149,12 @@ function sqlJoin(range1, pk1, range2, pk2, opt_header, type) {
       return;
     }
   }  
+
+  if (empty_pk) {
+    empty_pk = true;
+  } else {
+    empty_pk = false;
+  }
   
   if(opt_header === true) {
     var h1 = range1[0], h2 = range2[0];
@@ -160,26 +173,52 @@ function sqlJoin(range1, pk1, range2, pk2, opt_header, type) {
       h2 = modHeaders(h2, SECOND);    
       std = h1.concat(h2);
     }    
+
+    if (empty_pk) {
+      var range1PK = fillRangePks(range1, ind1);
+      var range2PK = fillRangePks(range2, ind2);
+    }
    
     var innerJoin = range1.reduce ( function (j1, r1, i) {
-      range2.reduce ( function (j2, r2, j) {        
-        if(type === CROSS || (r1[ind1] == r2[ind2])) {
-          j1.push(r1.concat(r2));
-          innerPK.push(r1[ind1]);
+      range2.forEach ( function (r2, j) {        
+        var add = false;
+        var key = null;
+
+        if (type === CROSS) {
+          add = true;
+          key = r1[ind1];
+        } else if (empty_pk) {
+          if (notEmptyPkMatches(range1PK, i, range2PK, j)) {
+            key = r1[ind1];
+            add = true;
+          }
+        } else if (r1[ind1] == r2[ind2]) {
+          add = true;
+          key = r1[ind1];
         }
-        return j2;
-      }, []);
+
+        if (add) {
+          j1.push(r1.concat(r2));
+          innerPK.push(key);
+        }
+      });
       return j1;
     }, []);
           
     if(type === LEFT || type === LEFTEX || type === OUTER || type === OUTEREX) {
-      var left = range1.filter ( function (d) {
+      var left = range1.filter ( function (d, i) {
+        if (empty_pk && isEmptyPk(range1PK, i)) {
+          return true;
+        }
         return innerPK.indexOf(d[ind1]) < 0;
       });
     }
           
     if(type === RIGHT || type === RIGHTEX || type === OUTER || type === OUTEREX) {
-      var right = range2.filter ( function (d) {
+      var right = range2.filter ( function (d, i) {
+        if (empty_pk && isEmptyPk(range2PK, i)) {
+          return true;
+        }
         return innerPK.indexOf(d[ind2]) < 0;
       });
           
@@ -250,4 +289,34 @@ function checkTypes (range, index, kind) {
   } else {
     return homogeneous;
   }
+}
+
+function fillRangePks(range, pkIndex) {
+  var rangePk = {
+    notEmpty: {},
+    empty: {},
+  };
+
+  for (key in range) {
+    var row = range[key];
+    var pk = row[pkIndex];
+    if (pk === "") {
+      rangePk["empty"][key] = true;
+    } else {
+      rangePk["notEmpty"][key] = pk;
+    }
+  }
+
+  return rangePk;
+}
+
+function notEmptyPkMatches(range1PK, i, range2PK, j) {
+  if ((i in range1PK["notEmpty"]) && (j in range2PK["notEmpty"])) {
+    return range1PK["notEmpty"][i] == range2PK["notEmpty"][j];
+  }
+  return false;
+}
+
+function isEmptyPk(rangePk, i) {
+  return i in rangePk["empty"];
 }
